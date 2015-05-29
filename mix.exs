@@ -29,7 +29,7 @@ defmodule HelloProxy.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [{:lager, "~> 2.1.1", override: true},
-     {:jsx, github: "liveforeverx/jsx", branch: "mix_compile", override: true},
+     {:jsx, github: "talentdeficit/jsx", branch: "develop", override: true},
      {:hello, git: "https://github.com/travelping/hello", branch: "hello_v3"}]
   end
 end
