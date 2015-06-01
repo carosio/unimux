@@ -35,7 +35,7 @@ defmodule HelloProxy do
     case Application.get_env(:hello_proxy, :routes) |> List.keyfind(name, 0) do
       nil -> {:stop, :normal, {:ok, :not_found}, state}
       _ ->
-        r = :hello_client.call(namespace(name), {method, args, []})
+        r = namespace(name) |> :hello_client.call({method, args, []})
         {:stop, :normal, r, state}
     end
   end
