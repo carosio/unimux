@@ -24,4 +24,4 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 config :hello_proxy,
-  routes: [{:Test, 'zmq-tcp://app/test'}]
+  routes: [{"Test", 'zmq-tcp://app/test'}]

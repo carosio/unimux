@@ -30,16 +30,13 @@ defmodule HelloProxy do
   def init(_identifier, _), do: {:ok, Application.get_env(:hello_proxy, :routes, [])}
 
   def handle_request(_context, method, args, state) do
-    method1 = :hello_lib.to_binary(method)
-    splittedMethod = String.split(method1, ".", [:global])
+    splittedMethod = method |> :hello_lib.to_binary |> String.split(".", [:global])
     name = Enum.join(List.delete_at(splittedMethod, length(splittedMethod) - 1), ".")
-    client = namespace(String.to_atom(name))
-    case :erlang.whereis(client) do
-      pid when is_pid(pid) ->
-        r = :hello_client.call(client, {method, args, []})
-        {:stop, :normal, r, state}
+    case Application.get_env(:hello_proxy, :routes) |> List.keyfind(name, 0) do
+      nil -> {:stop, :normal, {:ok, :not_found}, state}
       _ ->
-        {:stop, :normal, {:ok, :not_found}, state}
+        r = :hello_client.call(namespace(name), {method, args, []})
+        {:stop, :normal, r, state}
     end
   end
 
@@ -52,16 +49,15 @@ defmodule HelloProxy do
   end
 
   def namespace(name) do
-    List.to_atom('hello_client_' ++ Atom.to_char_list(name))
+    String.to_atom("hello_client_" <> name)
   end
 
   # for tests
-  def run_client() do
-    :hello_client.start({:local, __MODULE__}, 'zmq-tcp://proxy/server', [], [], [])
-    :timer.sleep(1000)
-  end
-
   def client() do
+    case :hello_client.start({:local, __MODULE__}, 'zmq-tcp://proxy/server', [], [], []) do
+      {:ok, _} -> :timer.sleep(1000)
+      _ -> []
+    end
     :hello_client.call(__MODULE__, {"Test.try", [], []})
   end
 end
@@ -70,9 +66,8 @@ end
 defmodule HelloProxy.Router do
   require Record
   Record.defrecordp(:context, Record.extract(:context, from_lib: "hello/include/hello.hrl"))
-  Record.defrecordp(:request, Record.extract(:request, from_lib: "hello/include/hello.hrl"))
 
-  def route(context(session_id: id), request(method: _method), _uri) do
+  def route(context(session_id: id), _request, _uri) do
     {:ok, HelloProxy.name(), id}
   end
 end
