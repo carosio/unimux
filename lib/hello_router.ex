@@ -1,7 +1,6 @@
 defmodule HelloRouter do
   use Application
 
-
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
@@ -17,7 +16,6 @@ defmodule HelloRouter do
     Supervisor.start_link(children, opts)
   end
 
-  # Hello service
   def name(), do: Application.get_env(:hello_router, :name, "proxy/server")
   def router_key(), do: ""
   def validation(), do: __MODULE__
@@ -46,15 +44,6 @@ defmodule HelloRouter do
 
   def namespace(name) do
     String.to_atom("hello_client_" <> name)
-  end
-
-  # for tests
-  def client() do
-    case :hello_client.start({:local, __MODULE__}, 'zmq-tcp://proxy/server', [], [], []) do
-      {:ok, _} -> :timer.sleep(1000)
-      _ -> []
-    end
-    :hello_client.call(__MODULE__, {"Test.try", [], []})
   end
 end
 

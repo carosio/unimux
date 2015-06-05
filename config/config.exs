@@ -2,6 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+
 config :hello_router,
-  routes: [{"Test", 'zmq-tcp://app/test'}],
-  listener_url: 'zmq-tcp://0.0.0.0'
+  routes: [{"APIPrefix1", 'http://127.0.0.1:8090'}],
+  listener_url: 'zmq-tcp://127.0.0.1:8080'
