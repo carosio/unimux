@@ -6,7 +6,7 @@
   "ezmq": {:git, "git://github.com/zeromq/ezmq.git", "48dfa301bc7feb7f0b9a8fbf3238ffbcc0e580c6", [branch: "master"]},
   "gen_listener_tcp": {:git, "https://github.com/travelping/gen_listener_tcp.git", "fb9626d172b09e6448d36f23e6055adf75189bfe", [branch: "master"]},
   "goldrush": {:hex, :goldrush, "0.1.6"},
-  "hello": {:git, "https://github.com/travelping/hello", "3023eb986059720211136ad7419ba5136daa500e", [branch: "hello_v3"]},
+  "hello": {:git, "git://github.com/travelping/hello.git", "3023eb986059720211136ad7419ba5136daa500e", [branch: "hello_v3"]},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "04566c70016f5a2a9a8b8ba6e6adf429e399c260", [branch: "master"]},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "e7696cc647ec0f6fa314515ee7ce5e0f3a433a46", [branch: "develop"]},
   "lager": {:hex, :lager, "2.1.1"},

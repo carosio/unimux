@@ -30,6 +30,6 @@ defmodule HelloProxy.Mixfile do
   defp deps do
     [{:lager, "~> 2.1.1", override: true},
      {:jsx, github: "talentdeficit/jsx", branch: "develop", override: true},
-     {:hello, git: "https://github.com/travelping/hello", branch: "hello_v3"}]
+     {:hello, github: "travelping/hello", branch: "hello_v3"}]
   end
 end
