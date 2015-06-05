@@ -1,6 +1,4 @@
 defmodule HelloRouter do
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
   use Application
 
 
@@ -15,8 +13,6 @@ defmodule HelloRouter do
     :hello.start_service(__MODULE__, [])
     :hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], HelloRouter.Router)
     :hello.bind(listener_url, __MODULE__)
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: HelloRouter.Supervisor]
     Supervisor.start_link(children, opts)
   end
