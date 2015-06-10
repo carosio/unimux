@@ -8,7 +8,7 @@ defmodule HelloRouter do
       {name, url} = client
       worker(:hello_client, [{:local, namespace(name)}, url, {[], [], []}], id: namespace(name))
     end
-    listener_url = Application.get_env(:hello_router, :listener_url, 'zmq-tcp://0.0.0.0')
+    listener_url = Application.get_env(:hello_router, :listen, 'zmq-tcp://0.0.0.0')
     :hello.start_service(__MODULE__, [])
     :hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], HelloRouter.Router)
     :hello.bind(listener_url, __MODULE__)

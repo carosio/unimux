@@ -4,5 +4,5 @@ use Mix.Config
 
 
 config :hello_router,
-  routes: [{"APIPrefix1", 'http://127.0.0.1:8090'}],
-  listener_url: 'zmq-tcp://127.0.0.1:8080'
+  routes: [{"APIPrefix", 'http://127.0.0.1:8080'}],
+  listen: 'zmq-tcp://127.0.0.1:20000'

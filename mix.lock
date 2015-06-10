@@ -1,5 +1,5 @@
 %{"abnfc": {:git, "git://github.com/heroku/abnfc.git", "856c77cce8f0dd66bfe95f3ec4041f9f59b742bb", [branch: "master"]},
-  "conform": {:git, "git://github.com/bitwalker/conform.git", "84eed4e5439289c51b710a7cc76cbc6d322f499b", []},
+  "conform": {:git, "git://github.com/bitwalker/conform.git", "dd014b078d0a50b2f0d0a6b051a930260da71435", []},
   "cowboy": {:git, "git://github.com/extend/cowboy.git", "e5170737d229a5b7bb6159d24ac10062fe8d6789", [branch: "1.0.x"]},
   "cowlib": {:git, "git://github.com/ninenines/cowlib.git", "d544a494af4dbc810fc9c15eaf5cc050cced1501", [ref: "1.0.0"]},
   "dnssd": {:git, "git://github.com/benoitc/dnssd_erlang.git", "d5862da78b2de281c3d8b537266c134decc65d76", [branch: "master"]},
