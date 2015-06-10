@@ -8,11 +8,11 @@
 
       It is possible to specify port as 0 or * to using only mdns registration
       """ ,
-      to: "hello_router.api",
+      to: "hello_router.listen_url",
       datatype: :charlist,
       default: 'http://127.0.0.1:8080'
     ],
-    "routes": [
+    "route.*": [
       doc: """
       List with target API endpoints in form of APIPrefix-><protocol>://<host>[:<port>]
 
@@ -20,17 +20,23 @@
       
       """ ,
       to: "hello_router.routes",
-      datatype: [list: :binary],
-      default: "APIPrefix1->http://127.0.0.1:8090, APIPrefix2->http://127.0.0.1:8091"
+      datatype: [:complex],
+      default: []
+    ],
+    "route.*.pattern": [
+      to: "hello_router.routes",
+      datatype: :binary,
+      default: ""
+    ],
+    "route.*.target": [
+      to: "hello_router.routes",
+      datatype: :string,
+      default: ""
     ]
   ],
   translations: [
-    "routes": fn
-      _, uri, acc ->
-        Enum.map(uri, fn (x) -> 
-          [name, target] = String.split(x, "->")
-          {name, to_char_list(target)}
-        end)
+    "hello_router.routes.*": fn _, {key, value_map}, acc ->
+      [{value_map[:pattern], value_map[:target]} | acc]
     end,
     "api": fn
       _, uri, acc ->
