@@ -3,11 +3,11 @@ defmodule UniMux.Mixfile do
 
   def project do
     [app: :unimux,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps(Mix.env)]
   end
 
   def application do
@@ -15,7 +15,14 @@ defmodule UniMux.Mixfile do
      mod: {UniMux, []}]
   end
 
-  defp deps do
+  @doc_deps [:earmark, :ex_doc]
+  defp deps(:release) do
+    Code.eval_file("mix.lock")
+    |> elem(0)
+    |> Enum.filter_map(&(not (&1 in @doc_deps)), fn({key, _}) -> {key, path: "deps/" <> "#{key}", override: true} end)
+  end
+
+  defp deps(_) do
     [{:lager, "~> 2.1.1", override: true},
      {:hello, github: "travelping/hello", branch: "hello_v3"},
      {:exlager, github: "xerions/exlager"},
