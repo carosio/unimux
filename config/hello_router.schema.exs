@@ -8,30 +8,30 @@
 
       It is possible to specify port as 0 or * to using only mdns registration
       """ ,
-      to: "hello_router.listen",
+      to: "unimux.listen",
       datatype: :charlist,
       default: "zmq-tcp://127.0.0.1:20000"
     ],
     "route.*": [
-      to: "hello_router.routes",
+      to: "unimux.routes",
       datatype: [:complex],
       default: []
     ],
     "route.*.pattern": [
       doc: "API prefix pattern",
-      to: "hello_router.routes",
+      to: "unimux.routes",
       datatype: :binary,
       default: "APIPrefix"
     ],
     "route.*.target": [
       doc: "Route API endpoint in form of <protocol>://<host>[:<port>]",
-      to: "hello_router.routes",
+      to: "unimux.routes",
       datatype: :string,
       default: "http://127.0.0.1:8080"
     ]
   ],
   translations: [
-    "hello_router.routes.*": fn _, {key, value_map}, acc ->
+    "unimux.routes.*": fn _, {key, value_map}, acc ->
       [{value_map[:pattern], value_map[:target]} | acc]
     end,
     "listen": fn

@@ -1,8 +1,8 @@
-defmodule HelloRouter.Mixfile do
+defmodule UniMux.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :hello_router,
+    [app: :unimux,
      version: "0.0.1",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
@@ -12,7 +12,7 @@ defmodule HelloRouter.Mixfile do
 
   def application do
     [applications: [:logger, :elixir, :hello],
-     mod: {HelloRouter, []}]
+     mod: {UniMux, []}]
   end
 
   defp deps do
