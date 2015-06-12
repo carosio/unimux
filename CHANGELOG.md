@@ -1,3 +1,8 @@
+# 0.1.2
+
+* Bug fixes
+  * update hello, to support http ip:port in clients without dns
+
 # 0.1.1
 
 * Bug fixes
