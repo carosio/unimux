@@ -1,3 +1,8 @@
+# 0.1.3
+
+* Bug fixes
+  * update jsx format dependency
+
 # 0.1.2
 
 * Bug fixes
