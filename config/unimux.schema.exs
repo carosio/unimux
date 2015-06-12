@@ -10,7 +10,7 @@
       """ ,
       to: "unimux.listen",
       datatype: :charlist,
-      default: "zmq-tcp://127.0.0.1:20000"
+      default: "http://127.0.0.1:20000"
     ],
     "route.*": [
       to: "unimux.routes",

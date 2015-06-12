@@ -1,3 +1,8 @@
+# 0.1.4
+
+* Bug fixes
+  * fix .schema file
+
 # 0.1.3
 
 * Bug fixes
