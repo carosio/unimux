@@ -24,12 +24,10 @@ defmodule UniMux do
   def init(_identifier, _), do: {:ok, Application.get_env(:unimux, :routes, [])}
 
   def handle_request(_context, method, args, state) do
-    splittedMethod = method |> :hello_lib.to_binary |> String.split(".", [:global])
-    name = Enum.join(List.delete_at(splittedMethod, length(splittedMethod) - 1), ".")
-    case Application.get_env(:unimux, :routes) |> List.keyfind(name, 0) do
-      nil -> {:stop, :normal, {:ok, :not_found}, state}
-      _ ->
-        r = namespace(name) |> :hello_client.call({method, args, []})
+    case resolve(method) do
+      nil -> {:stop, :not_found, {:ok, :not_found}, state}
+      name ->
+        r = :hello_client.call(name, {method, args, []})
         {:stop, :normal, r, state}
     end
   end
@@ -42,7 +40,23 @@ defmodule UniMux do
     :ok
   end
 
-  def namespace(name) do
+  defp resolve(method) do
+    names = for client <- Application.get_env(:unimux, :routes, []), do: elem(client, 0)
+    splittedMethod = method |> :hello_lib.to_binary |> String.split(".", [:global])
+    resolve(splittedMethod, names)
+  end
+  
+  defp resolve([], _), do: nil
+  defp resolve(_, []), do: nil
+  defp resolve(method, names) do
+    name = Enum.join(method, ".")
+    case :lists.member(name, names) do
+      true -> namespace(name)
+      false -> List.delete_at(method, length(method) - 1) |>  resolve(names)
+    end
+  end
+
+  defp namespace(name) do
     String.to_atom("hello_client_" <> name)
   end
 end

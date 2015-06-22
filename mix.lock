@@ -14,6 +14,8 @@
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "04566c70016f5a2a9a8b8ba6e6adf429e399c260", [branch: "master"]},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "a67186ddd251f9a3fedecfbb895483a0ec092c09", [branch: "develop"]},
   "lager": {:hex, :lager, "2.1.1"},
+  "meck": {:hex, :meck, "0.8.2"},
+  "mock": {:git, "git://github.com/jjh42/mock.git", "5a6bb6dd70ccc54997dda72f18f0ab85138c1253", []},
   "msgpack": {:git, "git://github.com/msgpack/msgpack-erlang.git", "c666a5f6568ac2e15687bb155442025dbb8b74ff", [branch: "master"]},
   "neotoma": {:git, "git://github.com/seancribbs/neotoma.git", "6c4a6009d3f34da2ec42c4f3585dae0abbb49dfc", []},
   "ranch": {:git, "git://github.com/ninenines/ranch.git", "adf1822defc2b7cfdc7aca112adabfa1d614043c", [ref: "1.0.0"]},
