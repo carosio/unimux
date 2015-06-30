@@ -27,6 +27,7 @@ defmodule UniMux.Mixfile do
      {:hello, github: "travelping/hello", branch: "hello_v3"},
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
-     {:exrm, github: "thz/exrm", branch: "configurability", override: true}]
+     {:exrm, github: "thz/exrm", branch: "configurability", override: true},
+     {:mock, github: "jjh42/mock"}]
   end
 end
