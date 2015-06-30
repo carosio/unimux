@@ -1,3 +1,11 @@
+# 0.2.0
+
+* Enhancments
+  * update to hello with better http-client
+
+* Backwards incompatible changes
+  * a.b.c matched on a now, before it has not matched on it
+
 # 0.1.4
 
 * Bug fixes
