@@ -1,4 +1,4 @@
-UniMux
+UniMux [![Build Status](https://travis-ci.org/carosio/unimux.svg)](https://travis-ci.org/carosio/unimux)
 ======
 
 UniMux applciation for routing [hello](https://github.com/travelping/hello)-based requests.

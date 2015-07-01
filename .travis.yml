@@ -1,0 +1,7 @@
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install avahi-daemon libavahi-compat-libdnssd-dev
+language: elixir
+otp_release:
+    - 17.4
+scrpit: "mix deps.get && mix compile && && mix test"
