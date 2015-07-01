@@ -4,4 +4,3 @@ before_install:
 language: elixir
 otp_release:
     - 17.4
-scrpit: "mix deps.get && mix compile && && mix test"
