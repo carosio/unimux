@@ -28,6 +28,7 @@ defmodule UniMux.Mixfile do
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
      {:exrm, github: "thz/exrm", branch: "configurability", override: true},
+     {:meck, "~> 0.8.2", override: true},
      {:mock, github: "jjh42/mock"}]
   end
 end
