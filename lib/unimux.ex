@@ -6,12 +6,11 @@ defmodule UniMux do
 
     children = for client <- Application.get_env(:unimux, :routes, []) do
       {name, url} = client
-      worker(:hello_client, [{:local, namespace(name)}, url, {[], [], []}], id: namespace(name))
+      worker(Hello.Client, [{:local, namespace(name)}, url, {[], [], []}], id: namespace(name))
     end
     listener_url = Application.get_env(:unimux, :listen, 'zmq-tcp://0.0.0.0')
-    :hello.start_service(__MODULE__, [])
-    :hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], UniMux.Router)
-    :hello.bind(listener_url, __MODULE__)
+    Hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], UniMux.Router)
+    Hello.bind(listener_url, __MODULE__)
     opts = [strategy: :one_for_one, name: UniMux.Supervisor]
     Supervisor.start_link(children, opts)
   end
@@ -27,7 +26,7 @@ defmodule UniMux do
     case resolve(method) do
       nil -> {:stop, :not_found, {:ok, :not_found}, state}
       name ->
-        r = :hello_client.call(name, {method, args, []})
+        r = Hello.Client.call(name, {method, args, []})
         {:stop, :normal, r, state}
     end
   end
