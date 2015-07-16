@@ -24,7 +24,7 @@ defmodule UniMux.Mixfile do
 
   defp deps(_) do
     [{:lager, "~> 2.1.1", override: true},
-     {:hello, github: "travelping/hello", branch: "hello_v3"},
+     {:hello, github: "travelping/hello", branch: "master"},
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
      {:exrm, github: "thz/exrm", branch: "configurability", override: true},
