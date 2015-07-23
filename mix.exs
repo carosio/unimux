@@ -11,7 +11,7 @@ defmodule UniMux.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :elixir, :hello, :runtime_tools, :exrun | (if Mix.env == :release do [:lager_journald_backend] else [] end)],
+    [applications: [:logger, :elixir, :metricman, :hello, :runtime_tools, :exrun | (if Mix.env == :release do [:lager_journald_backend] else [] end)],
      mod: {UniMux, []}]
   end
 
@@ -25,6 +25,7 @@ defmodule UniMux.Mixfile do
   defp deps(_) do
     [{:lager, "~> 2.1.1", override: true},
      {:hello, github: "travelping/hello", branch: "master"},
+     {:metricman, github: "xerions/metricman", branch: "master"}, 
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
      {:exrm, github: "thz/exrm", branch: "configurability", override: true},
