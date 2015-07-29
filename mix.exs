@@ -5,6 +5,7 @@ defmodule UniMux.Mixfile do
     [app: :unimux,
      version: "0.2.0",
      elixir: "~> 1.0",
+     test_coverage: [tool: Coverex.Task, coveralls: true],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(Mix.env)]
@@ -29,7 +30,8 @@ defmodule UniMux.Mixfile do
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
      {:exrm, github: "thz/exrm", branch: "configurability", override: true},
-     {:meck, "~> 0.8.2", override: true},
-     {:mock, github: "jjh42/mock"}]
+     {:coverex, "~> 1.4.1", only: :test}, 
+     {:meck, "~> 0.8.2", override: true, only: :test},
+     {:mock, github: "jjh42/mock", only: :test}]
   end
 end

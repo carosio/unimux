@@ -1,5 +1,6 @@
-UniMux [![Build Status](https://travis-ci.org/carosio/unimux.svg)](https://travis-ci.org/carosio/unimux)
+UniMux [![Build Status](https://travis-ci.org/carosio/unimux.svg)](https://travis-ci.org/carosio/unimux) [![Coverage Status](https://coveralls.io/repos/carosio/unimux/badge.svg?branch=master&service=github)](https://coveralls.io/github/carosio/unimux?branch=master)
 ======
+
 
 UniMux applciation for routing [hello](https://github.com/travelping/hello)-based requests.
 
