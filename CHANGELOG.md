@@ -1,3 +1,11 @@
+# 0.2.1
+
+* Enhancments
+  * update hello version to 3.1.0
+  * add travis
+  * add metricman
+  * add coverex
+
 # 0.2.0
 
 * Enhancments
