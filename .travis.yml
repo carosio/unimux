@@ -10,4 +10,4 @@ otp_release:
     - 17.4
     - 17.5
     - 18.0
-script: "MIX_ENV=test mix do deps.get, deps.compile, conform.effective, test --cover"
+script: "MIX_ENV=test mix do deps.get, deps.compile, conform.effective, release, test --cover"

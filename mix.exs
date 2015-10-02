@@ -3,7 +3,7 @@ defmodule UniMux.Mixfile do
 
   def project do
     [app: :unimux,
-     version: "0.2.1",
+     version: "0.2.2",
      elixir: "~> 1.0",
      test_coverage: [tool: Coverex.Task, coveralls: true],
      build_embedded: Mix.env == :prod,
@@ -16,11 +16,11 @@ defmodule UniMux.Mixfile do
      mod: {UniMux, []}]
   end
 
-  @doc_deps [:earmark, :ex_doc]
+  @exclude_deps [:earmark, :ex_doc]
   defp deps(:release) do
     Code.eval_file("mix.lock")
     |> elem(0)
-    |> Enum.filter_map(&(not (&1 in @doc_deps)), fn({key, _}) -> {key, path: "deps/" <> "#{key}", override: true} end)
+    |> Enum.filter_map(&(not (elem(&1, 0) in @exclude_deps)), fn({key, _}) -> {key, path: "deps/" <> "#{key}", override: true} end)
   end
 
   defp deps(_) do
