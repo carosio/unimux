@@ -29,9 +29,9 @@ defmodule UniMux.Mixfile do
      {:metricman, github: "xerions/metricman", branch: "master"}, 
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
-     {:exrm, github: "thz/exrm", branch: "configurability", override: true},
-     {:coverex, "~> 1.4.1", only: :test}, 
-     {:meck, "~> 0.8.2", override: true, only: :test},
-     {:mock, github: "jjh42/mock", only: :test}]
+     {:exrm, github: "xerions/exrm", override: true},
+     {:coverex, github: "alfert/coverex", tag: "v1.4.3", only: :test},
+     {:meck, github: "eproxus/meck", tag: "0.8.3", override: true},
+     {:mock, github: "jjh42/mock"}]
   end
 end
