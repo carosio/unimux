@@ -1,3 +1,11 @@
+# 0.2.2
+
+* Enhancments
+  * take exrm from xerions repository
+  * add travis tests with Elixir 1.1.0 and Erlang 17.4
+  * test conform schema
+  * fix feature to exclude dependencies in release phase
+
 # 0.2.1
 
 * Enhancments
