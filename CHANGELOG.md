@@ -1,3 +1,8 @@
+# 0.2.3
+
+* Enhancments
+  * dependency bump exrm and conform
+
 # 0.2.2
 
 * Enhancments
