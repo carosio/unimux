@@ -12,7 +12,7 @@
   "exlager": {:git, "https://github.com/xerions/exlager.git", "4994d36bd32232cbee2fd1a619c7c009b4efa128", []},
   "exometer": {:git, "https://github.com/xerions/exometer.git", "7fe87f5d9e4afed6c047c5ee6126104dde4b18c0", [branch: "master"]},
   "exometer_core": {:git, "git://github.com/Feuerlabs/exometer_core.git", "0da8f3ab41e2d147d86788babfa8c7ec52269c32", [branch: "master"]},
-  "exrm": {:git, "git://github.com/xerions/exrm.git", "7ccfbb16567529e0a07bb002c5aa1d5bbf633aa9", []},
+  "exrm": {:git, "git://github.com/xerions/exrm.git", "0a9ce5563ad454a581f37204223ecf6b068ab2fc", []},
   "exrun": {:git, "https://github.com/liveforeverx/exrun.git", "fc516628906cb571f832ade2b484e2ed5df40cc6", []},
   "ezmq": {:git, "git://github.com/RoadRunnr/ezmq.git", "a77378f0cb716b5293be6f69bdc99ed137a509c4", [branch: "fix-socket-crash"]},
   "folsom": {:git, "git://github.com/boundary/folsom", "38e2cce7c64ce1f0a3a918d90394cfc0a940b1ba", [tag: "0.8.2"]},
