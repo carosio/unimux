@@ -36,13 +36,12 @@
     end,
     "listen": fn
       _, uri, acc ->
-        try do
-          :ex_uri.decode(uri)
-          uri
-        catch
-          _, _ ->
-            IO.puts("Unsupported URI format: #{uri}")
-            exit(1)
+        case :ex_uri.decode(uri) do
+          {:error, :invalid_uri} ->
+            IO.puts("#{IO.ANSI.red}Unsupported URI format for 'listen' (API endpoint) option: #{uri}#{IO.ANSI.reset}")
+            exit("Unsupported URI format for 'listen' (API endpoint) option: #{uri}")
+          _ ->
+            uri
         end
     end
   ]
