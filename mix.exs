@@ -25,6 +25,7 @@ defmodule UniMux.Mixfile do
 
   defp deps(_) do
     [{:lager, "~> 2.1.1", override: true},
+     {:goldrush, github: "DeadZen/goldrush", tag: "0.1.6", override: true},
      {:hello, github: "travelping/hello", branch: "master"},
      {:metricman, github: "xerions/metricman", branch: "master"}, 
      {:exlager, github: "xerions/exlager"},
