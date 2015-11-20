@@ -1,3 +1,9 @@
+# 1.2.5
+
+* Enhancments
+  * Get rid of dnssd
+  * update dependencies hello, metricman to have better logging and disable default metric backend
+
 # 0.2.3
 
 * Enhancments
