@@ -1,3 +1,10 @@
+# 1.2.6
+
+* Enhancments
+  * improve config translations
+  * add configurable options for each route
+  * update hello for improve logging
+
 # 1.2.5
 
 * Enhancments
