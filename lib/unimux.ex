@@ -5,9 +5,13 @@ defmodule UniMux do
     import Supervisor.Spec, warn: false
 
     children = for client <- Application.get_env(:unimux, :routes, []) do
-      {name, url} = client
-      worker(Hello.Client, [{:local, namespace(name)}, url, {[], [], []}], id: namespace(name))
+      {name, url, timeout} = client
+      worker(Hello.Client, [{:local, namespace(name)}, url, {[{:recv_timeout, timeout}], [], []}], id: namespace(name))
     end
+    # Set hello server timeout to the maximum value of client's timeouts 
+    # and add some  value for pretend errors
+    timeouts = for {_, _, timeout} <- Application.get_env(:unimux, :routes, []), do: timeout
+    Application.put_env(:hello, :server_timeout, Enum.max(timeouts ++ [10000]) + 500)
     listener_url = Application.get_env(:unimux, :listen, 'zmq-tcp://0.0.0.0')
     Hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], UniMux.Router)
     Hello.bind(listener_url, __MODULE__)
@@ -25,8 +29,8 @@ defmodule UniMux do
   def handle_request(_context, method, args, state) do
     case resolve(method) do
       nil -> {:stop, :not_found, {:ok, :not_found}, state}
-      name ->
-        r = Hello.Client.call(name, {method, args, []})
+      {name, timeout} ->
+        r = Hello.Client.call(name, {method, args, []}, timeout)
         {:stop, :normal, r, state}
     end
   end
@@ -40,7 +44,7 @@ defmodule UniMux do
   end
 
   defp resolve(method) do
-    names = for client <- Application.get_env(:unimux, :routes, []), do: elem(client, 0)
+    names = for client <- Application.get_env(:unimux, :routes, []), do: {elem(client, 0), elem(client, 2)}
     splittedMethod = method |> :hello_lib.to_binary |> String.split(".", [:global])
     resolve(splittedMethod, names)
   end
@@ -49,8 +53,8 @@ defmodule UniMux do
   defp resolve(_, []), do: nil
   defp resolve(method, names) do
     name = Enum.join(method, ".")
-    case :lists.member(name, names) do
-      true -> namespace(name)
+    case :lists.keyfind(name, 1, names) do
+      {name, timeout} -> {namespace(name), timeout}
       false -> List.delete_at(method, length(method) - 1) |>  resolve(names)
     end
   end

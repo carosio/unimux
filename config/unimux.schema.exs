@@ -27,12 +27,18 @@
       doc: "Route API endpoint in form of <protocol>://<host>[:<port>]",
       to: "unimux.routes",
       datatype: :string,
-      default: "http://127.0.0.1:8080"
+      default: "http://127.0.0.1:8080",
+    ],
+    "route.*.timeout": [
+      doc: "Timeout for client call for API endpoint in ms",
+      to: "unimux.routes",
+      datatype: :integer,
+      default: 10000
     ]
   ],
   translations: [
     "unimux.routes.*": fn _, {key, value_map}, acc ->
-      [{value_map[:pattern], value_map[:target]} | acc]
+      [{value_map[:pattern], value_map[:target], value_map[:timeout]} | acc]
     end,
     "listen": fn
       _, uri, acc ->
