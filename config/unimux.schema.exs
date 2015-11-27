@@ -5,14 +5,13 @@
       API endpoint in form of <protocol>://<host>[:<port>]
 
       Supported protocols are: zmq-tcp, zmq-tcp6, zmq-ipc, http
-
-      It is possible to specify port as 0 or * to using only mdns registration
       """ ,
       to: "unimux.listen",
       datatype: :charlist,
       default: "http://127.0.0.1:20000"
     ],
     "default_timeout": [
+      doc: "Default timeout for all routes in milliseconds",
       to: "unimux.default_timeout",
       datatype: :integer,
       default: 10000
@@ -35,7 +34,7 @@
       default: "http://127.0.0.1:8080",
     ],
     "route.*.timeout": [
-      doc: "Timeout for client call for API endpoint in ms",
+      doc: "Timeout for the route in milliseconds",
       to: "unimux.routes",
       datatype: :integer,
       default: :undefined
