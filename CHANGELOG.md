@@ -1,3 +1,8 @@
+# 1.2.8
+
+* Enhancments
+  * update config files
+
 # 1.2.7
 
 * Enhancments
