@@ -1,3 +1,8 @@
+# 1.2.7
+
+* Enhancments
+  * add default timeout for routes
+
 # 1.2.6
 
 * Enhancments
