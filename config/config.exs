@@ -5,7 +5,8 @@ use Mix.Config
 
 config :unimux,
   routes: [{"APIPrefix", 'http://127.0.0.1:8080', 10000}],
-  listen: 'zmq-tcp://127.0.0.1:20000'
+  listen: 'zmq-tcp://127.0.0.1:20000',
+  default_timeout: 10000
 
 metricman_config = "deps/metricman/config/config.exs"
 if File.exists? metricman_config do

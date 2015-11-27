@@ -5,13 +5,13 @@ defmodule UniMux do
     import Supervisor.Spec, warn: false
 
     children = for client <- Application.get_env(:unimux, :routes, []) do
-      {name, url, timeout} = client
-      worker(Hello.Client, [{:local, namespace(name)}, url, {[{:recv_timeout, timeout}], [], []}], id: namespace(name))
+      {name, url, t} = client
+      worker(Hello.Client, [{:local, namespace(name)}, url, {[{:recv_timeout, timeout(t)}], [], []}], id: namespace(name))
     end
     # Set hello server timeout to the maximum value of client's timeouts 
     # and add some  value for pretend errors
-    timeouts = for {_, _, timeout} <- Application.get_env(:unimux, :routes, []), do: timeout
-    Application.put_env(:hello, :server_timeout, Enum.max(timeouts ++ [10000]) + 500)
+    timeouts = for {_, _, t} <- Application.get_env(:unimux, :routes, []), do: timeout(t)
+    Application.put_env(:hello, :server_timeout, Enum.max(timeouts ++ [timeout(:defaut)]) + 500)
     listener_url = Application.get_env(:unimux, :listen, 'zmq-tcp://0.0.0.0')
     Hello.start_listener(listener_url, [], :hello_proto_jsonrpc, [], UniMux.Router)
     Hello.bind(listener_url, __MODULE__)
@@ -54,10 +54,13 @@ defmodule UniMux do
   defp resolve(method, names) do
     name = Enum.join(method, ".")
     case :lists.keyfind(name, 1, names) do
-      {name, timeout} -> {namespace(name), timeout}
+      {name, t} -> {namespace(name), timeout(t)}
       false -> List.delete_at(method, length(method) - 1) |>  resolve(names)
     end
   end
+
+  defp timeout(t) when is_integer(t), do: t
+  defp timeout(_), do: Application.get_env(:unimux, :default_timeout)
 
   defp namespace(name) do
     String.to_atom("hello_client_" <> name)
