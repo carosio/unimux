@@ -12,6 +12,11 @@
       datatype: :charlist,
       default: "http://127.0.0.1:20000"
     ],
+    "default_timeout": [
+      to: "unimux.default_timeout",
+      datatype: :integer,
+      default: 10000
+    ],
     "route.*": [
       to: "unimux.routes",
       datatype: [:complex],
@@ -33,7 +38,7 @@
       doc: "Timeout for client call for API endpoint in ms",
       to: "unimux.routes",
       datatype: :integer,
-      default: 10000
+      default: :undefined
     ]
   ],
   translations: [
