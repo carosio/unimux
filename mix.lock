@@ -2,7 +2,7 @@
   "bbmustache": {:hex, :bbmustache, "1.0.3"},
   "bear": {:git, "git://github.com/boundary/bear.git", "119234548783af19b8ec75c879c5062676b92571", [tag: "0.8.2"]},
   "certifi": {:hex, :certifi, "0.3.0"},
-  "conform": {:git, "https://github.com/xerions/conform.git", "920a3fc7842230a0ccbec7b603debebb24463e8b", [branch: "master"]},
+  "conform": {:git, "https://github.com/xerions/conform.git", "5c92a9546da1091ade763e2802595a91e50a9d96", [branch: "master"]},
   "coverex": {:git, "https://github.com/alfert/coverex.git", "38c21c9cfac5e5df27cad0f4d8467fd94e824434", [tag: "v1.4.3"]},
   "cowboy": {:hex, :cowboy, "1.0.2"},
   "cowlib": {:hex, :cowlib, "1.0.1"},
