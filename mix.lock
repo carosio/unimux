@@ -21,7 +21,7 @@
   "getopt": {:hex, :getopt, "0.8.2"},
   "goldrush": {:git, "https://github.com/DeadZen/goldrush.git", "71e63212f12c25827e0c1b4198d37d5d018a7fec", [tag: "0.1.6"]},
   "hackney": {:hex, :hackney, "1.4.6"},
-  "hello": {:git, "https://github.com/travelping/hello.git", "65d8c7ef1de8b62bb68ff5758198fd627638bab8", [branch: "master"]},
+  "hello": {:git, "https://github.com/travelping/hello.git", "168570a7ef3ecfa32b3d9f4d8d5055f52a9ac8af", [branch: "master"]},
   "httpoison": {:hex, :httpoison, "0.7.2"},
   "idna": {:hex, :idna, "1.0.2"},
   "jsx": {:hex, :jsx, "2.6.2"},
