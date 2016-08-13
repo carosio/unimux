@@ -16,37 +16,52 @@
       datatype: :integer,
       default: 10000
     ],
-    "route.*": [
-      to: "unimux.routes",
-      datatype: [:complex],
-      default: []
-    ],
-    "route.*.pattern": [
+    "route.$id.pattern": [
       doc: "API prefix pattern",
-      to: "unimux.routes",
+      to: "unimux.$id.pattern",
       datatype: :binary,
       default: "APIPrefix"
     ],
-    "route.*.target": [
+    "route.$id.target": [
       doc: "Route API endpoint in form of <protocol>://<host>[:<port>]",
-      to: "unimux.routes",
-      datatype: :string,
+      to: "unimux.$id.target",
+      datatype: :charlist,
       default: "http://127.0.0.1:8080",
     ],
-    "route.*.timeout": [
+    "route.$id.timeout": [
       doc: "Timeout for the route in milliseconds",
-      to: "unimux.routes",
+      to: "unimux.$id.timeout",
       datatype: :integer,
       default: :undefined
     ]
   ],
-  translations: [
-    "unimux.routes.*": fn _, {key, value_map}, acc ->
-      [{value_map[:pattern], value_map[:target], value_map[:timeout]} | acc]
+  transforms: [
+    "unimux.routes": fn table ->
+      patterns = Conform.Conf.get(table, "unimux.$id.pattern")
+      targets = Conform.Conf.get(table, "unimux.$id.target")
+      timeouts = Conform.Conf.get(table, "unimux.$id.timeout")
+      Enum.map(patterns, fn({[_, id, _], pattern}) ->
+        :ets.delete(table, ['unimux', id, 'pattern'])
+        target = case Conform.Conf.get(table, "unimux." <> to_string(id) <> ".target") do
+                   [{_, target}] ->
+                     :ets.delete(table, ['unimux', id, 'target'])
+                     target
+                   _ ->
+                     "http://127.0.0.1:8080"
+                 end
+        timeout = case Conform.Conf.get(table, "unimux." <> to_string(id) <> ".timeout") do
+                   [{_, timeout}] ->
+                      :ets.delete(table, ['unimux', id, 'timeout'])
+                      timeout
+                   _ ->
+                     :undefined
+                 end        
+        [{pattern, target, timeout}]
+      end)
     end,
-    "listen": fn
-      _, uri, acc ->
-        case :ex_uri.decode(uri) do
+    "listen": fn table ->
+      [{_, uri}] = Conform.Conf.get(table, "unimux.listen")
+      case :ex_uri.decode(uri) do
           {:error, :invalid_uri} ->
             IO.puts("#{IO.ANSI.red}Unsupported URI format for 'listen' (API endpoint) option: #{uri}#{IO.ANSI.reset}")
             exit("Unsupported URI format for 'listen' (API endpoint) option: #{uri}")
