@@ -1,3 +1,8 @@
+# 1.2.11 (2016-10-06)
+
+* Bug fixes
+  * Set listener IP for distributed erlang to localhost
+
 # 1.2.10
 
 * Enhancements
