@@ -41,7 +41,6 @@
       targets = Conform.Conf.get(table, "unimux.$id.target")
       timeouts = Conform.Conf.get(table, "unimux.$id.timeout")
       Enum.map(patterns, fn({[_, id, _], pattern}) ->
-        :ets.delete(table, ['unimux', id, 'pattern'])
         target = case Conform.Conf.get(table, "unimux." <> to_string(id) <> ".target") do
                    [{_, target}] ->
                      :ets.delete(table, ['unimux', id, 'target'])
@@ -55,11 +54,13 @@
                       timeout
                    _ ->
                      :undefined
-                 end        
-        [{pattern, target, timeout}]
+                  end
+        :ets.delete(table, ['unimux', id, 'pattern'])
+        :ets.match_delete(table, {['unimux', '$id' | :_], :_})
+        {pattern, target, timeout}
       end)
     end,
-    "listen": fn table ->
+    "unimux.listen": fn table ->
       [{_, uri}] = Conform.Conf.get(table, "unimux.listen")
       case :ex_uri.decode(uri) do
           {:error, :invalid_uri} ->
