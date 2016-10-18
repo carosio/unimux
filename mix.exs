@@ -4,7 +4,7 @@ defmodule UniMux.Mixfile do
   def project do
     [app: :unimux,
      version: "1.2.11",
-     elixir: "~> 1.0",
+     elixir: "~> 1.3.0",
      test_coverage: [tool: Coverex.Task, coveralls: true],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -24,7 +24,7 @@ defmodule UniMux.Mixfile do
   end
 
   defp deps(_) do
-    [{:lager, "~> 2.1.1", override: true},
+    [{:lager, "~> 3.2.1", override: true},
      {:goldrush, github: "DeadZen/goldrush", tag: "0.1.6", override: true},
      {:hello, github: "travelping/hello", branch: "master"},
      {:hackney, "~> 1.4.4", override: true},
@@ -36,6 +36,10 @@ defmodule UniMux.Mixfile do
      {:exrm, github: "bitwalker/exrm", override: true},
      {:coverex, github: "alfert/coverex", tag: "v1.4.3", only: :test},
      {:meck, github: "eproxus/meck", tag: "0.8.3", override: true},
+		 {:exometer_core, github: "Feuerlabs/exometer_core", override: true},
+     {:erlware_commons, "~> 0.21.0", override: true},
+     {:edown, github: "uwiger/edown", override: true},
+     {:setup, github: "uwiger/setup", override: true},
      {:mock, github: "jjh42/mock"}]
   end
 end
