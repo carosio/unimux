@@ -3,7 +3,7 @@ defmodule UniMux.Mixfile do
 
   def project do
     [app: :unimux,
-     version: "1.2.11",
+     version: "1.3.0",
      elixir: "~> 1.3.0",
      test_coverage: [tool: Coverex.Task, coveralls: true],
      build_embedded: Mix.env == :prod,
@@ -32,14 +32,17 @@ defmodule UniMux.Mixfile do
      {:exlager, github: "xerions/exlager"},
      {:exrun, github: "liveforeverx/exrun"},
      {:conform_exrm, github: "bitwalker/conform_exrm"},
-     {:conform, "~> 2.1.1"},
+     # We use certain ref for conform because of bug with building of *.ez archive.
+     # We should use version from hex when it will be avaliable
+     {:conform, github: "bitwalker/conform", ref: "678dbfca6e7a94dd9d9214e6dbddf8b3ddb35dbf", override: true},
      {:exrm, github: "bitwalker/exrm", override: true},
      {:coverex, github: "alfert/coverex", tag: "v1.4.3", only: :test},
      {:meck, github: "eproxus/meck", tag: "0.8.3", override: true},
-		 {:exometer_core, github: "Feuerlabs/exometer_core", override: true},
+     {:exometer_core, github: "Feuerlabs/exometer_core", override: true},
      {:erlware_commons, "~> 0.21.0", override: true},
      {:edown, github: "uwiger/edown", override: true},
      {:setup, github: "uwiger/setup", override: true},
-     {:mock, github: "jjh42/mock"}]
+     {:mock, github: "jjh42/mock"},
+     {:relx, github: "erlware/relx", override: true}]
   end
 end

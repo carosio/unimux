@@ -1,3 +1,9 @@
+# 1.3.0 (2016-10-18)
+
+* Enhancements
+  * added support of elixir-1.3
+  * unimux moved to conform and exrm from upstream
+
 # 1.2.11 (2016-10-06)
 
 * Bug fixes
