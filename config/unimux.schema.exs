@@ -1,4 +1,7 @@
 [
+  extends: [
+    :exlager
+  ],
   mappings: [
     "listen": [
       doc: """

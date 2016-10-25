@@ -11,7 +11,7 @@
   "edown": {:git, "https://github.com/uwiger/edown.git", "754be25f71a04099c83f3ffdff268e70beeb0021", []},
   "erlware_commons": {:hex, :erlware_commons, "0.21.0", "a04433071ad7d112edefc75ac77719dd3e6753e697ac09428fc83d7564b80b15", [:rebar3], [{:cf, "0.2.1", [hex: :cf, optional: false]}]},
   "ex_uri": {:git, "https://github.com/heroku/ex_uri.git", "16f26db7026493d2934f615f8884fad42675f00e", [branch: "master"]},
-  "exlager": {:git, "https://github.com/xerions/exlager.git", "76280bfe6c6d78392aa791e4b4fb4a075e1855f1", []},
+  "exlager": {:git, "https://github.com/xerions/exlager.git", "f43abf432da30ca3934b6a4d66a44c74d3f27f1b", []},
   "exometer_core": {:git, "https://github.com/Feuerlabs/exometer_core.git", "9206b28d045b395abd1b86cc794223ec9aeeb0ea", []},
   "exometer_fetch": {:git, "https://github.com/travelping/exometer_fetch.git", "1a0d4f033ce0e8e6bad8c40b739d4c76b0dc546b", [branch: "master"]},
   "exometer_influxdb": {:git, "https://github.com/travelping/exometer_influxdb.git", "e5c88f73a9dec5cf479e80f867ce3ac3d651c802", [branch: "master"]},
