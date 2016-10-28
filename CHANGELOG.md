@@ -1,3 +1,10 @@
+# 1.3.1 (2016-10-28)
+
+* Bug fixes
+    * lager updated to 3.2.2 which contains bug fixes for log rotation
+    * hello updated to 3.3.0 which ctaonins bug fix for requests timeouts
+    * added missed exlager to conform schema
+
 # 1.3.0 (2016-10-18)
 
 * Enhancements
