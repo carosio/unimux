@@ -42,7 +42,7 @@ defmodule UniMux.Mixfile do
      {:erlware_commons, "~> 0.21.0", override: true},
      {:edown, github: "uwiger/edown", override: true},
      {:setup, github: "uwiger/setup", override: true},
-     {:mock, github: "jjh42/mock"},
+     {:mock, github: "jjh42/mock", only: :test},
      {:relx, github: "erlware/relx", override: true}]
   end
 end
