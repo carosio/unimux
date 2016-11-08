@@ -1,3 +1,9 @@
+# 1.3.2 (2016-11-08)
+
+* Bug fixes
+    * various dependency updates to fix metrics configuration
+    * `mock` is now a test dependency
+
 # 1.3.1 (2016-10-28)
 
 * Bug fixes

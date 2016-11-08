@@ -3,7 +3,7 @@ defmodule UniMux.Mixfile do
 
   def project do
     [app: :unimux,
-     version: "1.3.1",
+     version: "1.3.2",
      elixir: "~> 1.3.0",
      test_coverage: [tool: Coverex.Task, coveralls: true],
      build_embedded: Mix.env == :prod,
