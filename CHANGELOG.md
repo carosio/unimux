@@ -1,3 +1,8 @@
+# 1.3.3 (2016-11-16)
+
+* Bug fixes
+    * exrm and relx are updated to fix issue with non-readable sys.config
+
 # 1.3.2 (2016-11-08)
 
 * Bug fixes
