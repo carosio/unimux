@@ -35,7 +35,6 @@ defmodule UniMux.Mixfile do
      # We use certain ref for conform because of bug with building of *.ez archive.
      # We should use version from hex when it will be avaliable
      {:conform, github: "bitwalker/conform", ref: "678dbfca6e7a94dd9d9214e6dbddf8b3ddb35dbf", override: true},
-     {:exrm, github: "bitwalker/exrm", override: true},
      {:coverex, github: "alfert/coverex", tag: "v1.4.3", only: :test},
      {:meck, github: "eproxus/meck", tag: "0.8.3", override: true},
      {:exometer_core, github: "Feuerlabs/exometer_core", override: true},
@@ -43,6 +42,7 @@ defmodule UniMux.Mixfile do
      {:edown, github: "uwiger/edown", override: true},
      {:setup, github: "uwiger/setup", override: true},
      {:mock, github: "jjh42/mock", only: :test},
-     {:relx, github: "erlware/relx", override: true}]
+     {:relx, github: "erlware/relx", override: true}, #we need https://github.com/erlware/relx/issues/524
+     {:exrm, "~> 1.0.8"}]
   end
 end
